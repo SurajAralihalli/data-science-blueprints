@@ -39,10 +39,10 @@ default_output_kind = "parquet"
 default_input_kind = "parquet"
 
 parser = parser = argparse.ArgumentParser()
+parser.add_argument('input_prefix', help='text to prepend to every input file path (e.g., "hdfs:///churn-raw-data/"; the default is empty)', default=default_input_prefix)
+parser.add_argument('output_prefix', help='text to prepend to every output file (e.g., "hdfs:///churn-data-etl/"; the default is empty)', default=default_output_prefix)
 parser.add_argument('--output-file', help='location for denormalized output data (default="%s")' % default_output_file, default=default_output_file)
 parser.add_argument('--output-mode', help='Spark data source output mode for the result (default: overwrite)', default=default_output_mode)
-parser.add_argument('--input-prefix', help='text to prepend to every input file path (e.g., "hdfs:///churn-raw-data/"; the default is empty)', default=default_input_prefix)
-parser.add_argument('--output-prefix', help='text to prepend to every output file (e.g., "hdfs:///churn-data-etl/"; the default is empty)', default=default_output_prefix)
 parser.add_argument('--output-kind', help='output Spark data source type for the result (default: parquet)', default=default_output_kind)
 parser.add_argument('--input-kind', help='Spark data source type for the input (default: parquet)', default=default_input_kind)
 parser.add_argument('--summary-prefix', help='text to prepend to analytic reports (e.g., "reports/"; default is empty)', default='')
